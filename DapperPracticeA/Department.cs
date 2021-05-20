@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DapperPracticeA
 {
-    class Department
-    {
+    public class Department
+    {   
         public int DepartmentID { get; set; }
         public string Name { get; set; }
     }

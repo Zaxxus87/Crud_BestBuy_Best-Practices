@@ -18,6 +18,11 @@ namespace DapperPracticeA
 
             string connString = config.GetConnectionString("DefaultConnection");
             IDbConnection conn = new MySqlConnection(connString);
+
+            var repo = new DepartmentRepo(conn);
+            var departments = repo.GetAllDepartments();
+            foreach(var d in departments)
+                Console.WriteLine($"{d.DepartmentID} - {d.Name}");
         }
     }
 }
