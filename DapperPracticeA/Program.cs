@@ -20,9 +20,14 @@ namespace DapperPracticeA
             IDbConnection conn = new MySqlConnection(connString);
 
             var repo = new DepartmentRepo(conn);
-            var departments = repo.GetAllDepartments();
-            foreach(var d in departments)
-                Console.WriteLine($"{d.DepartmentID} - {d.Name}");
+            //var departments = repo.GetAllDepartments();
+            //foreach(var d in departments)
+            //    Console.WriteLine($"{d.DepartmentID} - {d.Name}");
+            //Console.WriteLine(repo.GetDepartment(2).Name);
+
+            //repo.InsertDepartment("New Department");
+            //repo.UpdateDepartment(6, "Renamed Dept");
+            repo.DeleteDepartment(6);
         }
     }
 }

@@ -18,21 +18,25 @@ namespace DapperPracticeA
         {
             return _connection.Query<Department>("SELECT * FROM departments");
         }
-        public Department GetDepartment(int id)
+        public Department GetDepartment(int p_id)
         {
-            throw new NotImplementedException();
+            return _connection.QuerySingle<Department>("SELECT * FROM departments Where DepartmentID = @id;",
+                new {id = p_id });
         }
-        public void InsertDepartment(string name)
+        public void InsertDepartment(string p_name)
         {
-            throw new NotImplementedException();
+            _connection.Execute("INSERT INTO departments (Name) VALUES (@name);",
+                new { name = p_name });
         }
-        public void DeleteDepartment(int id)
+        public void UpdateDepartment(int p_id, string p_newName)
         {
-            throw new NotImplementedException();
+            _connection.Execute("UPDATE departments SET Name = @newName WHERE DepartmentID = @id;",
+                new {newName = p_newName, id = p_id });
         }
-        public void UpdateDepartment(int id, string newName)
+        public void DeleteDepartment(int p_id)
         {
-            throw new NotImplementedException();
+            _connection.Execute("DELETE FROM departments WHERE DepartmentID = @id;",
+                new {id = p_id });
         }
 
 
